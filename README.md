@@ -2,7 +2,7 @@
 Online multiplayer platform game
 
 
-#How to Run
+# How to Run
 
 1. Clone Repository.
 2. Run command npm install to download dependencies.

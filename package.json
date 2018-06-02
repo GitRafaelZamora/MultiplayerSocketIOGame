@@ -9,7 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ecstatic": "^3.2.0",
+    "express": "^4.16.3",
+    "http": "0.0.0",
     "http-server": "^0.11.1",
-    "phaser": "^3.8.0"
+    "phaser": "^3.8.0",
+    "socket.io": "^2.1.1"
   }
 }

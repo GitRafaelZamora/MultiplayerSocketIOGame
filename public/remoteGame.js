@@ -96,7 +96,7 @@ var setEventHandlers = function() {
 function onSocketConnected() {
 	console.log('Connected to socket server');
 
-	enemies.forEach(function(enemy) {
+	enemies.forEach( function(enemy) {
 		enemy.player.kill();
 	});
 
@@ -129,6 +129,8 @@ function onMovePlayer( data ) {
 		console.log('onMovePlayer Player not Found: ', data.id);
 		return;
 	}
+
+	movePlayer.animations.play('left');
 
 	movePlayer.player.x = data.x;
 	movePlayer.player.y = data.y;
@@ -175,13 +177,16 @@ function update() {
 		}
 	}
 	var hitPlatform = game.physics.arcade.collide(player, layer);
+	var direction = 'stop';
 	player.body.velocity.x = 0;
     if (cursors.right.isDown) {
         player.body.velocity.x = 150;
         player.animations.play('right');
+        direction = 'right';
     } else if (cursors.left.isDown) {
         player.body.velocity.x = -150;
         player.animations.play('left');
+        direction = 'left';
     } else if (cursors.down.isDown) {
         player.body.velocity.y = 150;
     } else {
@@ -193,7 +198,7 @@ function update() {
         player.body.velocity.y = -380;
     }
 
-    socket.emit('move player', {id: player.id , x: player.x, y: player.y});
+    socket.emit('move player', {id: player.id , x: player.x, y: player.y , direction: direction , player: player});
 }
 
 // Find player by ID

@@ -6,7 +6,7 @@ var RemotePlayer = function( index, game, player, startX, startY ) {
 	this.player = player;
 	this.alive = true;
 
-	this.player = game.add.sprite(32, game.world.height - 150, 'enemy');
+	this.player = game.add.sprite(32, game.world.height - 150, 'character');
 
 	this.player.animations.add('left', [0,1,2,3], 10, true);
 	this.player.animations.add('right', [5,6,7,8], 10, true);
@@ -26,9 +26,9 @@ var RemotePlayer = function( index, game, player, startX, startY ) {
 RemotePlayer.prototype.update = function( ) {
 	if (this.player.x !== this.lastPosition.x || this.player.y !== this.lastPosition.y) {
 		if (this.player.x < this.lastPosition.x) {
-			this.player.play('left');
+			this.player.animations.play('left');
 		} else if (this.player.x > this.lastPosition.x) {
-			this.player.play('right');
+			this.player.animations.play('right');
 		} else {
 			this.player.animations.stop();
 			this.player.frame = 4;

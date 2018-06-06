@@ -25,14 +25,6 @@ var RemotePlayer = function( index, game, player, startX, startY ) {
 
 RemotePlayer.prototype.update = function( ) {
 	if (this.player.x !== this.lastPosition.x || this.player.y !== this.lastPosition.y) {
-		if (this.player.x < this.lastPosition.x) {
-			this.player.animations.play('left');
-		} else if (this.player.x > this.lastPosition.x) {
-			this.player.animations.play('right');
-		} else {
-			this.player.animations.stop();
-			this.player.frame = 4;
-		}
 		this.lastPosition.x = this.player.x;
 		this.lastPosition.y = this.player.y;
 	}

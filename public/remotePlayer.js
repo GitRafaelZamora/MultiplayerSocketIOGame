@@ -23,29 +23,6 @@ var RemotePlayer = function( index, game, player, startX, startY ) {
 	this.lastPosition = { x: x, y: y };
 }
 
-RemotePlayer.prototype.move = function( player ) {
-	player.body.velocity.x = 0;
-    if (cursors.right.isDown) {
-        player.body.velocity.x = 150;
-        player.animations.play('right');
-    } else if (cursors.left.isDown) {
-        player.body.velocity.x = -150;
-        player.animations.play('left');
-    } else if (cursors.down.isDown) {
-        player.body.velocity.y = 150;
-    } else {
-    	player.animations.stop();
-    	player.frame = 4;
-    }
-    // Jump Mechanics
-    if (cursors.up.isDown && 
-    	hitPlatform && 
-    	player.body.blocked.down) 
-    {
-        player.body.velocity.y = -380;
-    }
-}
-
 RemotePlayer.prototype.update = function( ) {
 	if (this.player.x !== this.lastPosition.x || 
 		this.player.y !== this.lastPosition.y) 

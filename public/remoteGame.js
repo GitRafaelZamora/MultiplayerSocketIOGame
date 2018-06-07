@@ -183,9 +183,26 @@ function depositBox(sprite, tile) {
 }
 
 function update() {
-	var remotePlayer = playerById(this.id);
-
-	remotePlayer.move( player );
+	player.body.velocity.x = 0;
+    if (cursors.right.isDown) {
+        player.body.velocity.x = 150;
+        player.animations.play('right');
+    } else if (cursors.left.isDown) {
+        player.body.velocity.x = -150;
+        player.animations.play('left');
+    } else if (cursors.down.isDown) {
+        player.body.velocity.y = 150;
+    } else {
+    	player.animations.stop();
+    	player.frame = 4;
+    }
+    // Jump Mechanics
+    if (cursors.up.isDown && 
+    	hitPlatform && 
+    	player.body.blocked.down) 
+    {
+        player.body.velocity.y = -380;
+    }
 
     socket.emit('move player', {
     	id: player.id, 

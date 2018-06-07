@@ -183,8 +183,9 @@ function depositBox(sprite, tile) {
 }
 
 function update() {
+	var remotePlayer = playerById(this.id);
 
-	player.move();
+	remotePlayer.move( player );
 
     socket.emit('move player', {
     	id: player.id, 

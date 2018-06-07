@@ -23,7 +23,7 @@ var RemotePlayer = function( index, game, player, startX, startY ) {
 	this.lastPosition = { x: x, y: y };
 }
 
-RemotePlayer.prototype.move = function( ) {
+RemotePlayer.prototype.move = function( player ) {
 	player.body.velocity.x = 0;
     if (cursors.right.isDown) {
         player.body.velocity.x = 150;
